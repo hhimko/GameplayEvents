@@ -19,6 +19,11 @@
 			"Name": "GameplayEvents",
 			"Type": "Runtime",
 			"LoadingPhase": "Default"
+		},
+		{
+			"Name": "GameplayEventsEditor",
+			"Type": "Editor",
+			"LoadingPhase": "Default"
 		}
 	]
 }
