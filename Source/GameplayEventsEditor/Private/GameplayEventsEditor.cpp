@@ -1,18 +1,23 @@
-// Copyright Epic Games, Inc. All Rights Reserved.
-
 #include "GameplayEventsEditor.h"
+
+#include "GameplayEventAsset.h"
+#include "IAssetTools.h"
 
 #define LOCTEXT_NAMESPACE "FGameplayEventsEditorModule"
 
 void FGameplayEventsEditorModule::StartupModule()
 {
-	// This code will execute after your module is loaded into memory; the exact timing is specified in the .uplugin file per-module
+	// Register the GameplayEvent custom category and asset
+	IAssetTools& AssetTools = IAssetTools::Get();
+	const EAssetTypeCategories::Type AssetType = AssetTools.RegisterAdvancedAssetCategory(FName(TEXT("GameplayEvents")), FText::FromString("Gameplay Events"));
+
+	const TSharedPtr<FGameplayEventAsset> CustomAsset = MakeShareable(new FGameplayEventAsset(AssetType));
+	AssetTools.RegisterAssetTypeActions(CustomAsset.ToSharedRef());
 }
 
 void FGameplayEventsEditorModule::ShutdownModule()
 {
-	// This function may be called during shutdown to clean up your module.  For modules that support dynamic reloading,
-	// we call this function before unloading the module.
+
 }
 
 #undef LOCTEXT_NAMESPACE
