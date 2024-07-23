@@ -8,6 +8,8 @@ class IToolkitHost;
 class FGameplayEventAsset : public FAssetTypeActions_Base
 {
 public:
+	static constexpr FName StaticName = TEXT("GameplayEventsAsset");
+
 	FGameplayEventAsset(EAssetTypeCategories::Type Category);
 
 	virtual FText GetName() const override;

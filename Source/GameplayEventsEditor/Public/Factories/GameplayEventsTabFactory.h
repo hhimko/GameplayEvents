@@ -8,6 +8,8 @@ class FGameplayEventsEditorApplication;
 class FGameplayEventsTabFactory : public FWorkflowTabFactory
 {
 public:
+	static constexpr FName StaticName = TEXT("GameplayEventsTab");
+
 	FGameplayEventsTabFactory(TSharedPtr<FGameplayEventsEditorApplication> Application);
 
 	virtual TSharedRef<SWidget> CreateTabBody(const FWorkflowTabSpawnInfo& Info) const override;

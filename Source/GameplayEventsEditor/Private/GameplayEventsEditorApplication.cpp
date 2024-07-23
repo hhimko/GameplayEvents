@@ -11,10 +11,11 @@ void FGameplayEventsEditorApplication::InitEditor(const EToolkitMode::Type Mode,
 {
 	TArray<UObject*> ObjectsToEdit;
 	ObjectsToEdit.Add(InObject);
-	InitAssetEditor(Mode, InToolkitHost, TEXT("GameplayEventsEditor"), FTabManager::FLayout::NullLayout, true, true, ObjectsToEdit);
+	InitAssetEditor(Mode, InToolkitHost, StaticName, FTabManager::FLayout::NullLayout, true, true, ObjectsToEdit);
 
+	// Register application modes
 	const TSharedRef<FGameplayEventsApplicationMode> ApplicationMode = MakeShareable(new FGameplayEventsApplicationMode(SharedThis(this)));
-	AddApplicationMode(TEXT("GameplayEventsApplicationMode"), ApplicationMode);
+	AddApplicationMode(FGameplayEventsApplicationMode::StaticName, ApplicationMode);
 
-	SetCurrentMode(TEXT("GameplayEventsApplicationMode"));
+	SetCurrentMode(FGameplayEventsApplicationMode::StaticName);
 }

@@ -11,7 +11,7 @@ FGameplayEventAsset::FGameplayEventAsset(EAssetTypeCategories::Type Category)
 
 FText FGameplayEventAsset::GetName() const
 {
-	return FText::FromString(TEXT("Gameplay Event Asset"));
+	return FText::FromName(StaticName);
 }
 
 FColor FGameplayEventAsset::GetTypeColor() const
@@ -33,7 +33,7 @@ void FGameplayEventAsset::OpenAssetEditor(const TArray<UObject*>& InObjects, TSh
 		UGameplayEvent* GameplayEvent = Cast<UGameplayEvent>(Object);
 		if (GameplayEvent != nullptr)
 		{
-			TSharedRef<FGameplayEventsEditorApplication> Application(new FGameplayEventsEditorApplication());
+			const TSharedRef<FGameplayEventsEditorApplication> Application(new FGameplayEventsEditorApplication());
 			Application->InitEditor(Mode, EditWithinLevelEditor, GameplayEvent);
 		}
 	}

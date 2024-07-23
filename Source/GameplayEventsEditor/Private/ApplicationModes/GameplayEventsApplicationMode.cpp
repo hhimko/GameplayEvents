@@ -4,8 +4,8 @@
 #include "Factories/GameplayEventsTabFactory.h"
 #include "Framework/Docking/TabManager.h"
 
-FGameplayEventsApplicationMode::FGameplayEventsApplicationMode(TSharedPtr<FGameplayEventsEditorApplication> Application)
-	: FApplicationMode(TEXT("GameplayEventsApplicationMode"))
+FGameplayEventsApplicationMode::FGameplayEventsApplicationMode(const TSharedPtr<FGameplayEventsEditorApplication>& Application)
+	: FApplicationMode(StaticName)
 	, WeakApplication(Application)
 {
 	AllowedTabSet.RegisterFactory(MakeShareable(new FGameplayEventsTabFactory(Application)));
@@ -14,7 +14,7 @@ FGameplayEventsApplicationMode::FGameplayEventsApplicationMode(TSharedPtr<FGamep
 	(
 		FTabManager::NewPrimaryArea()->SetOrientation(Orient_Vertical)->Split
 		(
-			FTabManager::NewStack()->AddTab(FName(TEXT("GameplayEventsTab")), ETabState::OpenedTab)
+			FTabManager::NewStack()->AddTab(FGameplayEventsTabFactory::StaticName, ETabState::OpenedTab)
 		)
 	);
 }

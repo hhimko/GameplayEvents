@@ -2,10 +2,10 @@
 #include "GameplayEventsEditorApplication.h"
 
 FGameplayEventsTabFactory::FGameplayEventsTabFactory(TSharedPtr<FGameplayEventsEditorApplication> Application)
-	: FWorkflowTabFactory(FName("GameplayEventsTab"), Application)
+	: FWorkflowTabFactory(StaticName, Application)
 	, WeakApplication(Application)
 {
-	TabLabel = FText::FromString(TEXT("GameplayEventsTab"));
+	TabLabel = FText::FromName(StaticName);
 	ViewMenuDescription = FText::FromString(TEXT("Displays the primary GameplayEvents editor tab."));
 	ViewMenuTooltip = FText::FromString(TEXT("Display the primary GameplayEvents editor tab."));
 }

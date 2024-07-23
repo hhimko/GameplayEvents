@@ -9,7 +9,9 @@ class FGameplayEventsEditorApplication;
 class FGameplayEventsApplicationMode : public FApplicationMode
 {
 public:
-	FGameplayEventsApplicationMode(TSharedPtr<FGameplayEventsEditorApplication> Application);
+	static constexpr FName StaticName = TEXT("GameplayEventsApplicationMode");
+
+	FGameplayEventsApplicationMode(const TSharedPtr<FGameplayEventsEditorApplication>& Application);
 
 	virtual void RegisterTabFactories(TSharedPtr<FTabManager> InTabManager) override;
 	virtual void PreDeactivateMode() override;
