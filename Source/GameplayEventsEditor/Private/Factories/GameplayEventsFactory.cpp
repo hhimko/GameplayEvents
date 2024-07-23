@@ -1,4 +1,4 @@
-#include "GameplayEventsFactory.h"
+#include "Factories/GameplayEventsFactory.h"
 
 #include "GameplayEvent.h"
 

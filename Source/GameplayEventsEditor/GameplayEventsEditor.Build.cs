@@ -10,7 +10,7 @@ public class GameplayEventsEditor : ModuleRules
 		
 		PublicDependencyModuleNames.AddRange(new string[]
 		{
-			"Core",
+			"Core"
 		});
 		
 		PrivateDependencyModuleNames.AddRange(new string[]
