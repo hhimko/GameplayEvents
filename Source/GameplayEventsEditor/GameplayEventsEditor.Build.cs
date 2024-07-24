@@ -10,7 +10,8 @@ public class GameplayEventsEditor : ModuleRules
 		
 		PublicDependencyModuleNames.AddRange(new string[]
 		{
-			"Core"
+			"Core", 
+			"GameplayEvents"
 		});
 		
 		PrivateDependencyModuleNames.AddRange(new string[]
@@ -19,9 +20,10 @@ public class GameplayEventsEditor : ModuleRules
 			"Engine",
 			"Slate",
 			"SlateCore",
-			"GameplayEvents",
 			"AssetTools",
-			"UnrealEd"
+			"UnrealEd",
+			"PropertyEditor",
+			"Projects"
 		});
 	}
 }

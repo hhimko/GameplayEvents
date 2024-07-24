@@ -2,6 +2,12 @@
 
 #include "ApplicationModes/GameplayEventsApplicationMode.h"
 
+FGameplayEventsEditorApplication::FGameplayEventsEditorApplication()
+	: Asset(nullptr)
+{
+
+}
+
 void FGameplayEventsEditorApplication::RegisterTabSpawners(const TSharedRef<FTabManager>& InTabManager)
 {
 	FWorkflowCentricApplication::RegisterTabSpawners(InTabManager);
@@ -9,6 +15,8 @@ void FGameplayEventsEditorApplication::RegisterTabSpawners(const TSharedRef<FTab
 
 void FGameplayEventsEditorApplication::InitEditor(const EToolkitMode::Type Mode, const TSharedPtr<IToolkitHost>& InToolkitHost, UObject* InObject)
 {
+	Asset = Cast<UGameplayEvent>(InObject);
+
 	TArray<UObject*> ObjectsToEdit;
 	ObjectsToEdit.Add(InObject);
 	InitAssetEditor(Mode, InToolkitHost, StaticName, FTabManager::FLayout::NullLayout, true, true, ObjectsToEdit);

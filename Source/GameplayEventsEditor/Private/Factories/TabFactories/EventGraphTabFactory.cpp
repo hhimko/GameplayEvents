@@ -1,7 +1,8 @@
-#include "Factories/GameplayEventsTabFactory.h"
+#include "Factories/TabFactories/EventGraphTabFactory.h"
+
 #include "GameplayEventsEditorApplication.h"
 
-FGameplayEventsTabFactory::FGameplayEventsTabFactory(TSharedPtr<FGameplayEventsEditorApplication> Application)
+FEventGraphTabFactory::FEventGraphTabFactory(const TSharedPtr<FGameplayEventsEditorApplication>& Application)
 	: FWorkflowTabFactory(StaticName, Application)
 	, WeakApplication(Application)
 {
@@ -10,12 +11,12 @@ FGameplayEventsTabFactory::FGameplayEventsTabFactory(TSharedPtr<FGameplayEventsE
 	ViewMenuTooltip = FText::FromString(TEXT("Display the primary GameplayEvents editor tab."));
 }
 
-TSharedRef<SWidget> FGameplayEventsTabFactory::CreateTabBody(const FWorkflowTabSpawnInfo& Info) const
+TSharedRef<SWidget> FEventGraphTabFactory::CreateTabBody(const FWorkflowTabSpawnInfo& Info) const
 {
 	return SNew(STextBlock).Text(FText::FromString(TEXT("Hello, World!")));
 }
 
-FText FGameplayEventsTabFactory::GetTabToolTipText(const FWorkflowTabSpawnInfo& Info) const
+FText FEventGraphTabFactory::GetTabToolTipText(const FWorkflowTabSpawnInfo& Info) const
 {
 	return FText::FromString(TEXT("GameplayEvents editor tab."));
 }
