@@ -6,7 +6,7 @@ FPropertiesTabFactory::FPropertiesTabFactory(const TSharedPtr<FGameplayEventsEdi
 	: FWorkflowTabFactory(StaticName, Application)
 	, WeakApplication(Application)
 {
-	TabLabel = FText::FromName(StaticName);
+	TabLabel = FText::FromString(TEXT("Event Properties"));
 	ViewMenuDescription = FText::FromString(TEXT("Gameplay event properties editor tab."));
 	ViewMenuTooltip = FText::FromString(TEXT("Display gameplay event properties editor tab."));
 }
@@ -20,7 +20,7 @@ TSharedRef<SWidget> FPropertiesTabFactory::CreateTabBody(const FWorkflowTabSpawn
 	Args.bSearchInitialKeyFocus = true;
 
 	const TSharedPtr<IDetailsView> DetailsView = PropertyEditorModule.CreateDetailView(Args);
-	DetailsView->SetObject(Application->GetAsset());
+	DetailsView->SetObject(Application->GetWorkingEvent());
 
 	return SNew(SVerticalBox)
 		+ SVerticalBox::Slot()
@@ -33,5 +33,5 @@ TSharedRef<SWidget> FPropertiesTabFactory::CreateTabBody(const FWorkflowTabSpawn
 
 FText FPropertiesTabFactory::GetTabToolTipText(const FWorkflowTabSpawnInfo& Info) const
 {
-	return FText::FromString(TEXT("GameplayEvents editor tab."));
+	return FText::FromString(TEXT("GameplayEvents properties tab."));
 }

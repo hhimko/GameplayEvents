@@ -8,7 +8,7 @@ class IToolkitHost;
 class FGameplayEventAsset : public FAssetTypeActions_Base
 {
 public:
-	static constexpr FName StaticName = TEXT("GameplayEventsAsset");
+	static inline const FName StaticName = TEXT("GameplayEvent");
 
 	FGameplayEventAsset(EAssetTypeCategories::Type Category);
 

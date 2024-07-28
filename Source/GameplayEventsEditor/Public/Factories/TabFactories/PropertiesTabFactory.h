@@ -8,7 +8,7 @@ class FGameplayEventsEditorApplication;
 class FPropertiesTabFactory : public FWorkflowTabFactory
 {
 public:
-	static constexpr FName StaticName = TEXT("PropertiesTab");
+	static inline const FName StaticName = TEXT("PropertiesTab");
 
 	FPropertiesTabFactory(const TSharedPtr<FGameplayEventsEditorApplication>& Application);
 

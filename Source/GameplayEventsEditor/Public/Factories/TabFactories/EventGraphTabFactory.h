@@ -8,7 +8,7 @@ class FGameplayEventsEditorApplication;
 class FEventGraphTabFactory : public FWorkflowTabFactory
 {
 public:
-	static constexpr FName StaticName = TEXT("EventGraphTab");
+	static inline const FName StaticName = TEXT("EventGraphTab");
 
 	FEventGraphTabFactory(const TSharedPtr<FGameplayEventsEditorApplication>& Application);
 

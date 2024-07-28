@@ -9,7 +9,7 @@ class FGameplayEventsEditorApplication;
 class FGameplayEventsApplicationMode : public FApplicationMode
 {
 public:
-	static constexpr FName StaticName = TEXT("GameplayEventsApplicationMode");
+	static inline const FName StaticName = TEXT("GameplayEventsApplicationMode");
 
 	FGameplayEventsApplicationMode(const TSharedPtr<FGameplayEventsEditorApplication>& Application);
 

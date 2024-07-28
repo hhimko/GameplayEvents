@@ -26,15 +26,14 @@ UClass* FGameplayEventAsset::GetSupportedClass() const
 
 void FGameplayEventAsset::OpenAssetEditor(const TArray<UObject*>& InObjects, TSharedPtr<IToolkitHost> EditWithinLevelEditor)
 {
-	const EToolkitMode::Type Mode = EditWithinLevelEditor.IsValid() ? EToolkitMode::WorldCentric : EToolkitMode::Standalone;
-
 	for (UObject* Object : InObjects)
 	{
 		UGameplayEvent* GameplayEvent = Cast<UGameplayEvent>(Object);
 		if (GameplayEvent != nullptr)
 		{
-			const TSharedRef<FGameplayEventsEditorApplication> Application(new FGameplayEventsEditorApplication());
-			Application->InitEditor(Mode, EditWithinLevelEditor, GameplayEvent);
+			FGameplayEventsEditorApplication* App = new FGameplayEventsEditorApplication(GameplayEvent);
+			const TSharedRef<FGameplayEventsEditorApplication> Application(App);
+			Application->InitAssetEditor(EditWithinLevelEditor);
 		}
 	}
 }

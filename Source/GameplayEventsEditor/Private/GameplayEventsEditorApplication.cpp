@@ -1,29 +1,30 @@
 #include "GameplayEventsEditorApplication.h"
 
 #include "ApplicationModes/GameplayEventsApplicationMode.h"
+#include "Kismet2/BlueprintEditorUtils.h"
 
-FGameplayEventsEditorApplication::FGameplayEventsEditorApplication()
-	: Asset(nullptr)
+FGameplayEventsEditorApplication::FGameplayEventsEditorApplication(UGameplayEvent* GameplayEvent)
+	: WorkingEvent(GameplayEvent)
 {
-
+	EventGraph = FBlueprintEditorUtils::CreateNewGraph(WorkingEvent, NAME_None, UEdGraph::StaticClass(), UEdGraphSchema::StaticClass());
 }
 
-void FGameplayEventsEditorApplication::RegisterTabSpawners(const TSharedRef<FTabManager>& InTabManager)
+void FGameplayEventsEditorApplication::InitAssetEditor(const TSharedPtr<IToolkitHost>& InToolkitHost)
 {
-	FWorkflowCentricApplication::RegisterTabSpawners(InTabManager);
+	const EToolkitMode::Type Mode = InToolkitHost.IsValid() ? EToolkitMode::WorldCentric : EToolkitMode::Standalone;
+	FWorkflowCentricApplication::InitAssetEditor(Mode, InToolkitHost, StaticName, FTabManager::FLayout::NullLayout, true, true, WorkingEvent);
 }
 
-void FGameplayEventsEditorApplication::InitEditor(const EToolkitMode::Type Mode, const TSharedPtr<IToolkitHost>& InToolkitHost, UObject* InObject)
+void FGameplayEventsEditorApplication::PostInitAssetEditor()
 {
-	Asset = Cast<UGameplayEvent>(InObject);
-
-	TArray<UObject*> ObjectsToEdit;
-	ObjectsToEdit.Add(InObject);
-	InitAssetEditor(Mode, InToolkitHost, StaticName, FTabManager::FLayout::NullLayout, true, true, ObjectsToEdit);
-
 	// Register application modes
 	const TSharedRef<FGameplayEventsApplicationMode> ApplicationMode = MakeShareable(new FGameplayEventsApplicationMode(SharedThis(this)));
 	AddApplicationMode(FGameplayEventsApplicationMode::StaticName, ApplicationMode);
 
 	SetCurrentMode(FGameplayEventsApplicationMode::StaticName);
+}
+
+void FGameplayEventsEditorApplication::RegisterTabSpawners(const TSharedRef<FTabManager>& InTabManager)
+{
+	FWorkflowCentricApplication::RegisterTabSpawners(InTabManager);
 }

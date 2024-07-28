@@ -9,15 +9,30 @@ FGameplayEventsApplicationMode::FGameplayEventsApplicationMode(const TSharedPtr<
 	: FApplicationMode(StaticName)
 	, WeakApplication(Application)
 {
+	AllowedTabSet.RegisterFactory(MakeShareable(new FEventGraphTabFactory(Application)));
 	AllowedTabSet.RegisterFactory(MakeShareable(new FPropertiesTabFactory(Application)));
 
 	TabLayout = FTabManager::NewLayout(TEXT("GameplayEventsApplicationModeLayout"))
 	->AddArea
 	(
-		FTabManager::NewPrimaryArea()->SetOrientation(Orient_Vertical)
+		FTabManager::NewPrimaryArea()
+		->SetOrientation(Orient_Vertical)
 		->Split
 		(
-			FTabManager::NewStack()->AddTab(FPropertiesTabFactory::StaticName, ETabState::OpenedTab)
+			FTabManager::NewSplitter()
+			->SetOrientation(Orient_Horizontal)
+			->Split
+			(
+				FTabManager::NewStack()
+				->SetSizeCoefficient(0.8f)
+				->AddTab(FEventGraphTabFactory::StaticName, ETabState::OpenedTab)
+			)
+			->Split
+			(
+				FTabManager::NewStack()
+				->SetSizeCoefficient(0.2f)
+				->AddTab(FPropertiesTabFactory::StaticName, ETabState::OpenedTab)
+			)
 		)
 	);
 }
