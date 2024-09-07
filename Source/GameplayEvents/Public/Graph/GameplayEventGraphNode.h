@@ -10,15 +10,16 @@ class GAMEPLAYEVENTS_API UGameplayEventGraphNodePin : public UObject
 	GENERATED_BODY()
 
 public:
+	UGameplayEventGraphNodePin();
 	UGameplayEventGraphNodePin(const FName& Name, const FGuid& Guid);
 
-	UPROPERTY()
+	UPROPERTY(BlueprintReadOnly)
 	FName Name;
 
-	UPROPERTY()
+	UPROPERTY(BlueprintReadOnly)
 	FGuid Guid;
 
-	UPROPERTY()
+	UPROPERTY(BlueprintReadOnly)
 	UGameplayEventGraphNodePin* Connection;
 
 };
@@ -29,15 +30,16 @@ class GAMEPLAYEVENTS_API UGameplayEventGraphNode : public UObject
 	GENERATED_BODY()
 
 public:
+	UGameplayEventGraphNode();
 	UGameplayEventGraphNode(const FVector2D& Position, UGameplayEventGraphNodePin* InputPin, UGameplayEventGraphNodePin* OutputPin);
 
-	UPROPERTY()
+	UPROPERTY(BlueprintReadOnly)
 	FVector2D Position;
 
-	UPROPERTY()
+	UPROPERTY(BlueprintReadOnly)
 	UGameplayEventGraphNodePin* InputPin;
 
-	UPROPERTY()
+	UPROPERTY(BlueprintReadOnly)
 	UGameplayEventGraphNodePin* OutputPin;
 
 };

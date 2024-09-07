@@ -23,7 +23,8 @@ public class GameplayEventsEditor : ModuleRules
 			"AssetTools",
 			"UnrealEd",
 			"PropertyEditor",
-			"Projects"
+			"Projects",
+			"ToolMenus"
 		});
 	}
 }

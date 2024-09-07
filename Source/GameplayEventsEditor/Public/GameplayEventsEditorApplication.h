@@ -11,10 +11,10 @@ class FGameplayEventsEditorApplication : public FWorkflowCentricApplication, pub
 public:
 	static inline const FName StaticName = TEXT("GameplayEventsEditorApplication");
 
-	FGameplayEventsEditorApplication(UGameplayEvent* GameplayEvent);
+	explicit FGameplayEventsEditorApplication(UGameplayEvent* GameplayEvent);
 	virtual ~FGameplayEventsEditorApplication() override { }
 
-	UGameplayEvent* GetWorkingEvent() const { return WorkingEvent; }
+	UGameplayEvent* GetEvent() const { return Event; }
 	UEdGraph* GetEventGraph() const { return EventGraph; }
 
 	void InitAssetEditor(const TSharedPtr<IToolkitHost>& InToolkitHost);
@@ -31,8 +31,17 @@ protected:
 	virtual FLinearColor GetWorldCentricTabColorScale() const override { return FLinearColor(FColor::Magenta); }
 	virtual FString GetDocumentationLink() const override { return TEXT("https://github.com/hhimko/GameplayEvents"); }
 
+	virtual void OnClose() override;
+
 private:
-	UGameplayEvent* WorkingEvent;
+	void OnGraphChanged(const FEdGraphEditAction& EditAction);
+
+	void RestoreEditorGraphFromRuntimeEvent();
+	void UpdateRuntimeEventFromEditorGraph();
+
+	UGameplayEvent* Event;
 	UEdGraph* EventGraph;
+
+	FDelegateHandle GraphChangedDelegateHandle;
 
 };

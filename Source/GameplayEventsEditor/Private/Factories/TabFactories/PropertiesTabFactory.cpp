@@ -20,7 +20,7 @@ TSharedRef<SWidget> FPropertiesTabFactory::CreateTabBody(const FWorkflowTabSpawn
 	Args.bSearchInitialKeyFocus = true;
 
 	const TSharedPtr<IDetailsView> DetailsView = PropertyEditorModule.CreateDetailView(Args);
-	DetailsView->SetObject(Application->GetWorkingEvent());
+	DetailsView->SetObject(Application->GetEvent());
 
 	return SNew(SVerticalBox)
 		+ SVerticalBox::Slot()
