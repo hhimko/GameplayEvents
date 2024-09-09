@@ -1,16 +1,16 @@
 #include "ApplicationModes/GameplayEventsApplicationMode.h"
 
 #include "GameplayEventsEditorApplication.h"
-#include "Factories/TabFactories/EventGraphTabFactory.h"
-#include "Factories/TabFactories/PropertiesTabFactory.h"
+#include "Factories/TabFactories/EventTreeTabFactory.h"
+#include "Factories/TabFactories/EventPropertiesTabFactory.h"
 #include "Framework/Docking/TabManager.h"
 
 FGameplayEventsApplicationMode::FGameplayEventsApplicationMode(const TSharedPtr<FGameplayEventsEditorApplication>& Application)
 	: FApplicationMode(StaticName)
 	, WeakApplication(Application)
 {
-	AllowedTabSet.RegisterFactory(MakeShareable(new FEventGraphTabFactory(Application)));
-	AllowedTabSet.RegisterFactory(MakeShareable(new FPropertiesTabFactory(Application)));
+	AllowedTabSet.RegisterFactory(MakeShareable(new FEventTreeTabFactory(Application)));
+	AllowedTabSet.RegisterFactory(MakeShareable(new FEventPropertiesTabFactory(Application)));
 
 	TabLayout = FTabManager::NewLayout(TEXT("GameplayEventsApplicationModeLayout"))
 	->AddArea
@@ -25,13 +25,13 @@ FGameplayEventsApplicationMode::FGameplayEventsApplicationMode(const TSharedPtr<
 			(
 				FTabManager::NewStack()
 				->SetSizeCoefficient(0.8f)
-				->AddTab(FEventGraphTabFactory::StaticName, ETabState::OpenedTab)
+				->AddTab(FEventTreeTabFactory::StaticName, ETabState::OpenedTab)
 			)
 			->Split
 			(
 				FTabManager::NewStack()
 				->SetSizeCoefficient(0.2f)
-				->AddTab(FPropertiesTabFactory::StaticName, ETabState::OpenedTab)
+				->AddTab(FEventPropertiesTabFactory::StaticName, ETabState::OpenedTab)
 			)
 		)
 	);

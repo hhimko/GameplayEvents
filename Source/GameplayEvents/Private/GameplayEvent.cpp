@@ -1,7 +1,7 @@
 #include "GameplayEvent.h"
 
 UGameplayEvent::UGameplayEvent()
-	: Graph(nullptr)
+	: EventTree(nullptr)
 {
 
 }

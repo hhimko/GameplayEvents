@@ -1,7 +1,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Graph/GameplayEventGraph.h"
+#include "EventTree/GameplayEventTree.h"
 #include "GameplayEvent.generated.h"
 
 UCLASS(BlueprintType)
@@ -13,5 +13,5 @@ public:
 	UGameplayEvent();
 
 	UPROPERTY()
-	UGameplayEventGraph* Graph;
+	UGameplayEventTree* EventTree;
 };

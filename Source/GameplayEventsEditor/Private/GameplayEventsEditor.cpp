@@ -11,7 +11,7 @@ void FGameplayEventsEditorModule::StartupModule()
 	IAssetTools& AssetTools = IAssetTools::Get();
 	const EAssetTypeCategories::Type AssetType = AssetTools.RegisterAdvancedAssetCategory(FName(TEXT("GameplayEvents")), FText::FromString("Gameplay Events"));
 
-	const TSharedPtr<FGameplayEventAsset> CustomAsset = MakeShareable(new FGameplayEventAsset(AssetType));
+	const TSharedPtr<FGameplayEventAsset> CustomAsset = MakeShared<FGameplayEventAsset>(AssetType);
 	AssetTools.RegisterAssetTypeActions(CustomAsset.ToSharedRef());
 }
 

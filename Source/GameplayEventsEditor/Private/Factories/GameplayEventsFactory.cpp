@@ -10,8 +10,8 @@ UGameplayEventsFactory::UGameplayEventsFactory(const FObjectInitializer& ObjectI
 
 UObject* UGameplayEventsFactory::FactoryCreateNew(UClass* InClass, UObject* InParent, FName InName, EObjectFlags Flags, UObject* Context, FFeedbackContext* Warn)
 {
-	UGameplayEvent* Asset = NewObject<UGameplayEvent>(InParent, InName, Flags);
-	return Asset;
+	UGameplayEvent* GameplayEvent = NewObject<UGameplayEvent>(InParent, InName, Flags);
+	return GameplayEvent;
 }
 
 bool UGameplayEventsFactory::CanCreateNew() const

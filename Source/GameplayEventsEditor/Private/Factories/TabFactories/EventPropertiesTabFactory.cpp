@@ -1,8 +1,8 @@
-#include "Factories/TabFactories/PropertiesTabFactory.h"
+#include "Factories/TabFactories/EventPropertiesTabFactory.h"
 
 #include "GameplayEventsEditorApplication.h"
 
-FPropertiesTabFactory::FPropertiesTabFactory(const TSharedPtr<FGameplayEventsEditorApplication>& Application)
+FEventPropertiesTabFactory::FEventPropertiesTabFactory(const TSharedPtr<FGameplayEventsEditorApplication>& Application)
 	: FWorkflowTabFactory(StaticName, Application)
 	, WeakApplication(Application)
 {
@@ -11,7 +11,7 @@ FPropertiesTabFactory::FPropertiesTabFactory(const TSharedPtr<FGameplayEventsEdi
 	ViewMenuTooltip = FText::FromString(TEXT("Display gameplay event properties editor tab."));
 }
 
-TSharedRef<SWidget> FPropertiesTabFactory::CreateTabBody(const FWorkflowTabSpawnInfo& Info) const
+TSharedRef<SWidget> FEventPropertiesTabFactory::CreateTabBody(const FWorkflowTabSpawnInfo& Info) const
 {
 	const TSharedPtr<FGameplayEventsEditorApplication> Application = WeakApplication.Pin();
 	FPropertyEditorModule& PropertyEditorModule = FModuleManager::LoadModuleChecked<FPropertyEditorModule>(TEXT("PropertyEditor"));
@@ -31,7 +31,7 @@ TSharedRef<SWidget> FPropertiesTabFactory::CreateTabBody(const FWorkflowTabSpawn
 		];
 }
 
-FText FPropertiesTabFactory::GetTabToolTipText(const FWorkflowTabSpawnInfo& Info) const
+FText FEventPropertiesTabFactory::GetTabToolTipText(const FWorkflowTabSpawnInfo& Info) const
 {
 	return FText::FromString(TEXT("GameplayEvents properties tab."));
 }

@@ -5,12 +5,12 @@
 
 class FGameplayEventsEditorApplication;
 
-class FEventGraphTabFactory : public FWorkflowTabFactory
+class FEventPropertiesTabFactory : public FWorkflowTabFactory
 {
 public:
-	static inline const FName StaticName = TEXT("EventGraphTab");
+	static inline const FName StaticName = TEXT("EventPropertiesTab");
 
-	FEventGraphTabFactory(const TSharedPtr<FGameplayEventsEditorApplication>& Application);
+	FEventPropertiesTabFactory(const TSharedPtr<FGameplayEventsEditorApplication>& Application);
 
 	virtual TSharedRef<SWidget> CreateTabBody(const FWorkflowTabSpawnInfo& Info) const override;
 	virtual FText GetTabToolTipText(const FWorkflowTabSpawnInfo& Info) const override;

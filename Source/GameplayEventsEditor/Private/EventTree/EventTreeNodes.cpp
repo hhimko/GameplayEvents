@@ -1,11 +1,11 @@
-#include "Graph/GEGraphNodes.h"
+#include "EventTree/EventTreeNodes.h"
 
-UGEGraphNode::UGEGraphNode()
+UEventTreeNode::UEventTreeNode()
 {
 	RemoveNodeAction = FExecuteAction::CreateWeakLambda(this, [this]() { this->DestroyNode(); });
 }
 
-void UGEGraphNode::GetNodeContextMenuActions(UToolMenu* Menu, UGraphNodeContextMenuContext* Context) const
+void UEventTreeNode::GetNodeContextMenuActions(UToolMenu* Menu, UGraphNodeContextMenuContext* Context) const
 {
 	FToolMenuSection& DefaultSection = Menu->FindOrAddSection(NAME_None);
 

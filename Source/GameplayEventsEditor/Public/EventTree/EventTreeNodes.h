@@ -1,15 +1,15 @@
 #pragma once
 
 #include "EdGraph/EdGraphNode.h"
-#include "GEGraphNodes.generated.h"
+#include "EventTreeNodes.generated.h"
 
 UCLASS()
-class UGEGraphNode : public UEdGraphNode
+class UEventTreeNode : public UEdGraphNode
 {
 	GENERATED_BODY()
 
 public:
-	UGEGraphNode();
+	UEventTreeNode();
 
 	virtual void GetNodeContextMenuActions(UToolMenu* Menu, UGraphNodeContextMenuContext* Context) const override;
 

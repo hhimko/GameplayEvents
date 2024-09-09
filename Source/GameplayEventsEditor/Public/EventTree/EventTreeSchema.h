@@ -2,10 +2,10 @@
 
 #include "CoreMinimal.h"
 #include "EdGraph/EdGraph.h"
-#include "GEGraphSchema.generated.h"
+#include "EventTreeSchema.generated.h"
 
 UCLASS()
-class UGEGraphSchema : public UEdGraphSchema
+class UEventTreeSchema : public UEdGraphSchema
 {
 	GENERATED_BODY()
 

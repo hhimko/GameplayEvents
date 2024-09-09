@@ -1,13 +1,13 @@
 #include "GameplayEventsEditorApplication.h"
 
 #include "ApplicationModes/GameplayEventsApplicationMode.h"
-#include "Graph/GEGraphSchema.h"
+#include "EventTree/EventTreeSchema.h"
 #include "Kismet2/BlueprintEditorUtils.h"
 
 FGameplayEventsEditorApplication::FGameplayEventsEditorApplication(UGameplayEvent* GameplayEvent)
 	: Event(GameplayEvent)
 {
-	EventGraph = FBlueprintEditorUtils::CreateNewGraph(Event, NAME_None, UEdGraph::StaticClass(), UGEGraphSchema::StaticClass());
+	EventGraph = FBlueprintEditorUtils::CreateNewGraph(Event, NAME_None, UEdGraph::StaticClass(), UEventTreeSchema::StaticClass());
 	RestoreEditorGraphFromRuntimeEvent();
 }
 
