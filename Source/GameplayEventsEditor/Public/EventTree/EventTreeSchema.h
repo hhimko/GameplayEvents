@@ -1,7 +1,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "EdGraph/EdGraph.h"
+#include "EdGraph/EdGraphSchema.h"
 #include "EventTreeSchema.generated.h"
 
 UCLASS()

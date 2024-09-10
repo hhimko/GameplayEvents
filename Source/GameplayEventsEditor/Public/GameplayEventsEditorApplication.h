@@ -5,6 +5,7 @@
 #include "Misc/NotifyHook.h"
 #include "EditorUndoClient.h"
 #include "GameplayEvent.h"
+#include "EdGraph/EdGraph.h"
 
 class FGameplayEventsEditorApplication : public FWorkflowCentricApplication, public FEditorUndoClient, public FNotifyHook
 {

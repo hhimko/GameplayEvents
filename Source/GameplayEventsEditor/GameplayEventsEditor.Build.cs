@@ -24,7 +24,8 @@ public class GameplayEventsEditor : ModuleRules
 			"UnrealEd",
 			"PropertyEditor",
 			"Projects",
-			"ToolMenus"
+			"ToolMenus",
+			"GraphEditor"
 		});
 	}
 }

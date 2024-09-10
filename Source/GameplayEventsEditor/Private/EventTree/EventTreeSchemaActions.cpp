@@ -1,6 +1,7 @@
 #include "EventTree/EventTreeSchemaActions.h"
 
 #include "EventTree/EventTreeNodes.h"
+#include "EdGraph/EdGraph.h"
 
 FEventTreeSchemaAction_NewNode::FEventTreeSchemaAction_NewNode()
 	: Super(NodeCategory, MenuDesc, ToolTip, 0)
@@ -10,10 +11,11 @@ FEventTreeSchemaAction_NewNode::FEventTreeSchemaAction_NewNode()
 
 UEdGraphNode* FEventTreeSchemaAction_NewNode::PerformAction(UEdGraph* ParentGraph, UEdGraphPin* FromPin, const FVector2D Location, bool bSelectNewNode)
 {
-	UEventTreeNode* TreeNode = NewObject<UEventTreeNode>(ParentGraph);
+	UEventTreeNode* TreeNode = UEventTreeNode::CreateNew(ParentGraph, Location);
 
-	TreeNode->NodePosX = Location.X;
-	TreeNode->NodePosY = Location.Y;
+	if (FromPin != nullptr) {
+		TreeNode->GetSchema()->TryCreateConnection(FromPin, TreeNode->GetPinAt(0));
+	}
 
 	ParentGraph->Modify();
 	ParentGraph->AddNode(TreeNode, true, bSelectNewNode);

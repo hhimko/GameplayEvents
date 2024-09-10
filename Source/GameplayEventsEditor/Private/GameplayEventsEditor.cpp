@@ -2,6 +2,7 @@
 
 #include "GameplayEventAsset.h"
 #include "IAssetTools.h"
+#include "Factories/EventTreeNodePinsFactory.h"
 
 #define LOCTEXT_NAMESPACE "FGameplayEventsEditorModule"
 
@@ -13,11 +14,14 @@ void FGameplayEventsEditorModule::StartupModule()
 
 	const TSharedPtr<FGameplayEventAsset> CustomAsset = MakeShared<FGameplayEventAsset>(AssetType);
 	AssetTools.RegisterAssetTypeActions(CustomAsset.ToSharedRef());
+
+	PinFactory = MakeShared<FEventTreeNodePinsFactory>();
+	FEdGraphUtilities::RegisterVisualPinFactory(PinFactory);
 }
 
 void FGameplayEventsEditorModule::ShutdownModule()
 {
-
+	FEdGraphUtilities::UnregisterVisualPinFactory(PinFactory);
 }
 
 #undef LOCTEXT_NAMESPACE
